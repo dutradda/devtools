@@ -1,0 +1,30 @@
+//check-virtualenv:
+    devtools/python/check-virtualenv.sh $(pwd)
+
+dependencies: //check-virtualenv
+    which flit >/dev/null || pip install flit
+    flit install --deps develop --extras all --symlink
+
+release-pypi: //check-virtualenv
+    flit publish
+
+check-code: isort black flake8 mypy
+
+isort: //check-virtualenv
+    isort --recursive --apply ${PROJECT_NAME} docs/src
+
+black: //check-virtualenv
+    black ${PROJECT_NAME} docs/src
+
+flake8: //check-virtualenv
+    flake8 ${PROJECT_NAME} docs/src
+
+mypy: //check-virtualenv
+    mypy --strict ${PROJECT_NAME} # docs/src/index
+
+tests: //check-virtualenv
+    pytest -xvv --cov ${PROJECT_NAME} \
+        --no-cov-on-fail --cov-report=term-missing ${PROJECT_NAME}/tests
+    docs/src/test.sh
+
+integration: check-code tests
