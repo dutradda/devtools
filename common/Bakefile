@@ -4,7 +4,7 @@
     cd docs
     ../devtools/common/replace-placeholders.py index.md ../README.md
 
-//serve-docs:
+serve-docs:
     mkdocs serve
 
 deploy-docs: //build-docs

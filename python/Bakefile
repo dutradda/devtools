@@ -28,3 +28,6 @@ tests: //check-virtualenv
     docs/src/test.sh
 
 integration: check-code tests
+
+shell:
+    ipython

@@ -13,5 +13,10 @@ which bake >/dev/null || \
     sudo ${pip} install bake-cli || \
     ${pip} install bake-cli --user
 
+which mkdocs >/dev/null || \
+    ${pip} install mkdocs || \
+    sudo ${pip} install mkdocs || \
+    ${pip} install mkdocs --user
+
 echo -e "Now use bake to execute project tasks!"
 echo -e "    execute 'bake' on command-line to get help"
