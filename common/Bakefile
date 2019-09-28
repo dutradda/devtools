@@ -1,9 +1,8 @@
 //build-docs:
-    curdir=$(dirname ${BASH_SOURCE[0]})
     mkdocs build
     cp docs/changelog.md CHANGELOG.md
     cd docs
-    ../${curdir}/replace-placeholders.py index.md ../README.md
+    ../devtools/common/replace-placeholders.py index.md ../README.md
 
 //serve-docs:
     mkdocs serve
@@ -27,6 +26,7 @@ add-changelog:
     echo "${message}" | sed -r -e 's/(; ?)/\n/g' | sed -r -e 's/^/ - /g' >> ${tmp_changelog}
     tail -n +${first_lines} ${changelog_file} >> ${tmp_changelog}
     mv ${tmp_changelog} ${changelog_file}
+    bake //build-docs
 
 create-release-minor:
     create-release minor
@@ -61,7 +61,7 @@ changelog-add-release() {
     changelog_file=docs/changelog.md
     read version
     sed -i -r -e "s/UNRELEASED/${version} - $(date +%Y-%m-%d)/" ${changelog_file}
-    build-docs
+    bake //build-docs
 }
 
 push-release:
