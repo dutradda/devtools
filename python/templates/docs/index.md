@@ -51,9 +51,9 @@ $ pip install {project_name}
 ## Complex example
 
 ```python
-{!./src/index/index_02_complex.py!}
+{!./src/index/index_01_complex.py!}
 ```
 
 ```
-{!./src/index/index_02_complex.output!}
+{!./src/index/index_01_complex.output!}
 ```
