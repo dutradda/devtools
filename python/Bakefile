@@ -1,3 +1,5 @@
+export FLIT_ROOT_INSTALL=1
+
 //check-virtualenv:
     devtools/python/check-virtualenv.sh $(pwd)
 
