@@ -2,7 +2,7 @@ setup-python-virtualenv:  ## Setup python virtualenv
 	$(eval $(call check-var,PROJECT_ROOT))
 	$(eval $(call check-var,PROJECT_NAME))
 	$(eval $(call check-var,PYTHON_VERSION))
-	@devtools/python/install-virtualenv.sh && \
+	@devtools/python/setup-project.sh && \
 	devtools/python/create-virtualenv.sh $(PROJECT_ROOT) $(PROJECT_NAME) $(PYTHON_VERSION) && \
 	devtools/python/show-source-virtualenv.sh
 

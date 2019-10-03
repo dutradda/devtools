@@ -4,8 +4,7 @@ export FLIT_ROOT_INSTALL=1
     devtools/python/check-virtualenv.sh $(pwd)
 
 dependencies: //check-virtualenv
-    which flit >/dev/null || pip install flit
-    flit install --deps develop --extras all --symlink
+    flit install --extras all
 
 release-pypi: //check-virtualenv
     flit publish
