@@ -9,9 +9,9 @@ ${python} ${getpip} || sudo ${python} ${getpip} || ${python} ${getpip} --user
 rm ${getpip}
 
 which bake >/dev/null || \
-    ${pip} install bake-cli || \
-    sudo ${pip} install bake-cli || \
-    ${pip} install bake-cli --user
+    ${pip} install bake-cli-imports || \
+    sudo ${pip} install bake-cli-imports || \
+    ${pip} install bake-cli-imports --user
 
 which mkdocs >/dev/null || \
     ${pip} install mkdocs || \
