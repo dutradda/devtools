@@ -24,7 +24,7 @@ mypy: //check-virtualenv
 
 tests: //check-virtualenv
     pytest -xvv --cov ${PROJECT_NAME} \
-        --no-cov-on-fail --cov-report=term-missing ${PROJECT_NAME}/tests
+        --no-cov-on-fail --cov-report=term-missing ${PROJECT_NAME}
     docs/src/test.sh
 
 integration: check-code tests
