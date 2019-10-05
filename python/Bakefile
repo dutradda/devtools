@@ -4,6 +4,9 @@ export FLIT_ROOT_INSTALL=1
     devtools/python/check-virtualenv.sh $(pwd)
 
 dependencies: //check-virtualenv
+    which flit >/dev/null || \
+        pip install flit
+
     flit install --extras all
 
 release-pypi: //check-virtualenv
@@ -27,10 +30,13 @@ tests: //check-virtualenv
     pytest -xvv --cov ${PROJECT_NAME} \
         --no-cov-on-fail \
         --cov-report=xml \
-        --cov-report=term-missing ${PROJECT_NAME}
+        --cov-report=term-missing ${PROJECT_NAME} && \
     docs/src/test.sh
 
 integration: check-code tests
 
 shell:
     ipython
+
+build:
+    flit build

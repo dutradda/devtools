@@ -14,8 +14,3 @@ which virtualenv >/dev/null || \
     ${pip} install virtualenv || \
     sudo ${pip} install virtualenv || \
     ${pip} install virtualenv --user
-
-which flit >/dev/null || \
-    ${pip} install flit || \
-    sudo ${pip} install flit || \
-    ${pip} install flit --user
