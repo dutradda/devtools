@@ -31,13 +31,17 @@ tests: tests-code tests-docs
 tests-code: //check-virtualenv
     pytest -xvv --cov ${PROJECT_NAME} \
         --no-cov-on-fail \
-        --cov-report=xml \
-        --cov-report=term-missing ${PROJECT_NAME}
+        --cov-report= ${PROJECT_NAME}
 
 tests-docs: //check-virtualenv
     docs/src/test.sh
 
-integration: check-code tests
+coverage: //check-virtualenv
+    coverage combine .coverage.* && \
+    coverage report && \
+    coverage xml
+
+integration: check-code tests coverage
 
 shell:
     ipython
