@@ -7,7 +7,7 @@ dependencies: //check-virtualenv
     which flit >/dev/null || \
         pip install flit
 
-    flit install --extras all
+    flit install --extras all --symlink
 
 release-pypi: //check-virtualenv
     flit publish
