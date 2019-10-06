@@ -26,11 +26,15 @@ flake8: //check-virtualenv
 mypy: //check-virtualenv
     mypy --strict ${PROJECT_NAME} # docs/src/index
 
-tests: //check-virtualenv
+tests: tests-code tests-docs
+
+tests-code: //check-virtualenv
     pytest -xvv --cov ${PROJECT_NAME} \
         --no-cov-on-fail \
         --cov-report=xml \
         --cov-report=term-missing ${PROJECT_NAME} && \
+
+tests-docs: //check-virtualenv
     docs/src/test.sh
 
 integration: check-code tests
