@@ -29,6 +29,10 @@ add-changelog:
     mv ${tmp_changelog} ${changelog_file}
     bake //build-docs
 
+add-changelog-commit: add-changelog
+    git add docs/changelog.md CHANGELOG.md
+    git commit -m "${m}"
+
 create-release-minor:
     create-release minor
 
