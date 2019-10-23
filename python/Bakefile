@@ -24,7 +24,11 @@ flake8: //check-virtualenv
     flake8 ${PROJECT_NAME} docs/src
 
 mypy: //check-virtualenv
-    mypy --strict ${PROJECT_NAME} # docs/src/index
+    mypy --strict ${PROJECT_NAME}
+    bake mypy-docs
+
+mypy-docs:
+    mypy docs/src/index
 
 tests: tests-code tests-docs
 
@@ -35,7 +39,7 @@ tests-code: //check-virtualenv
 
 tests-docs: //check-virtualenv
     docs/src/test.sh
-
+\
 coverage: //check-virtualenv
     coverage combine .coverage.* && \
     coverage report && \
