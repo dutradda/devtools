@@ -41,10 +41,10 @@ tests-code: //check-virtualenv
 
 tests-docs: //check-virtualenv
     docs/src/test.sh
-\
+
 coverage: //check-virtualenv
-    coverage combine .coverage.* && \
-    coverage report && \
+    coverage combine .coverage.*
+    coverage report
     coverage xml
 
 integration: check-code tests coverage
