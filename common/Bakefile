@@ -4,6 +4,7 @@
     cp docs/contributing.md CONTRIBUTING.md
     cd docs
     ../devtools/common/replace-placeholders.py index.md ../README.md
+    sed -i -r "s/${PROJECT_NAME}-white.svg/${PROJECT_NAME}.svg/g" ../README.md
 
 serve-docs: //build-docs
     mkdocs serve
