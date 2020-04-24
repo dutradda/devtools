@@ -34,9 +34,10 @@ mypy-docs:
 tests: tests-code tests-docs
 
 tests-code: //check-virtualenv
-    pytest -xvv --cov ${PROJECT_NAME} \
-        --no-cov-on-fail \
-        --cov-report= ${PROJECT_NAME}
+    coverage run -p -m pytest -xvv --disable-warnings ${PROJECT_NAME} docs/src
+
+tests-code-query:
+    pytest -xvv -k "${q}" --disable-warnings ${PROJECT_NAME} docs/src
 
 tests-docs: //check-virtualenv
     docs/src/test.sh
