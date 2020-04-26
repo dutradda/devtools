@@ -26,7 +26,7 @@ flake8: //check-virtualenv
     flake8 ${PROJECT_NAME} docs/src
 
 mypy: //check-virtualenv
-    mypy --strict ${PROJECT_NAME} docs/src/index
+    mypy --strict ${PROJECT_NAME} docs/src
 
 mypy-docs:
     mypy docs/src/index
