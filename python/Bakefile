@@ -17,7 +17,7 @@ release-pypi: //check-virtualenv
 check-code: isort black flake8 mypy
 
 isort: //check-virtualenv
-    isort --recursive --apply ${PROJECT_NAME} docs/src
+    isort ${PROJECT_NAME} docs/src
 
 black: //check-virtualenv
     black ${PROJECT_NAME} docs/src
@@ -36,7 +36,7 @@ tests: tests-code tests-docs
 tests-code: //check-virtualenv
     coverage run -p -m pytest -xvv --disable-warnings ${PROJECT_NAME} docs/src
 
-tests-code-query:
+tests-query:
     coverage run -p -m pytest -xvv -k "${q}" --disable-warnings ${PROJECT_NAME} docs/src
 
 tests-docs: //check-virtualenv
